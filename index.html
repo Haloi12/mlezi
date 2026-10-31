@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mlezi</title>
+<meta name="description" content="Mlezi — le jeu qui t'apprend à protéger les autres en ligne. Prévention du cyberharcèlement aux Comores.">
+<meta name="theme-color" content="#0B5D45">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mlezi">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ACCUEIL -->
+  <section id="ecran-accueil" class="ecran actif">
+    <header class="accueil-tete">
+      <div class="logo" aria-hidden="true"><img src="icons/icon-192.png" alt=""></div>
+      <h1>Mlezi</h1>
+      <p class="tagline" data-t="tagline"></p>
+    </header>
+
+    <div class="bloc">
+      <p class="etiquette" data-t="choisirLangue"></p>
+      <div class="segment" id="choix-langue">
+        <button data-langue="sh">Shingazidja</button>
+        <button data-langue="fr">Français</button>
+      </div>
+    </div>
+
+    <div class="bloc">
+      <p class="etiquette" data-t="choisirProfil"></p>
+      <div class="segment" id="choix-profil">
+        <button data-profil="fille" data-t="profilFille"></button>
+        <button data-profil="garcon" data-t="profilGarcon"></button>
+        <button data-profil="adulte" data-t="profilAdulte"></button>
+      </div>
+    </div>
+
+    <div class="bloc">
+      <p class="etiquette" data-t="niveaux"></p>
+      <ol class="niveaux" id="liste-niveaux"></ol>
+    </div>
+
+    <button class="btn-aide" id="btn-infos-accueil"><span class="pastille">!</span><span data-t="besoinAide"></span></button>
+
+    <button class="btn-installer" id="btn-installer" hidden><span data-t="installer"></span></button>
+    <p class="note-ios" id="note-ios" hidden data-t="installIos"></p>
+
+    <footer class="pied">
+      <p><span class="point-vert"></span><span data-t="horsLigne"></span></p>
+      <p data-t="aucuneDonnee"></p>
+      <p data-t="fictif"></p>
+    </footer>
+  </section>
+
+  <!-- JEU -->
+  <section id="ecran-jeu" class="ecran">
+    <header class="barre">
+      <button class="icone" id="btn-quitter" aria-label="Retour">&larr;</button>
+      <div class="barre-titre">
+        <strong id="jeu-titre"></strong>
+        <span id="jeu-lieu"></span>
+      </div>
+      <button class="btn-son" id="btn-son" aria-pressed="true"><span class="son-icone" aria-hidden="true"></span><span data-t="son"></span></button>
+    </header>
+    <div class="progression" id="jeu-progression"></div>
+
+    <div class="scene" id="scene" aria-hidden="true"></div>
+    <p class="narration" id="narration"></p>
+
+    <div class="conversation">
+      <div class="conv-tete">
+        <div class="avatar-groupe" aria-hidden="true">#</div>
+        <div><strong id="conv-nom"></strong><span id="conv-sous"></span></div>
+      </div>
+      <div class="bulles" id="bulles"></div>
+    </div>
+
+    <div class="carte-question" id="carte-question">
+      <div class="question-tete">
+        <p class="etiquette"><span data-t="situation"></span> <span class="mono" id="num-situation"></span></p>
+        <button class="btn-audio" id="btn-audio" hidden><span aria-hidden="true">&#9654;</span> <span data-t="ecouter"></span></button>
+      </div>
+      <h2 id="question"></h2>
+      <div class="choix" id="choix"></div>
+    </div>
+
+    <div class="carte-retour" id="carte-retour" hidden>
+      <p class="verdict" id="verdict"></p>
+      <p id="retour-texte"></p>
+      <button class="btn-principal" id="btn-continuer" data-t="continuer"></button>
+    </div>
+  </section>
+
+  <!-- RESULTAT -->
+  <section id="ecran-resultat" class="ecran">
+    <div class="resultat">
+      <p class="etiquette" data-t="laFin"></p>
+      <p class="fin-histoire" id="res-fin"></p>
+      <p class="etiquette" data-t="resultat"></p>
+      <div class="medaille" aria-hidden="true"><img src="icons/icon-192.png" alt=""></div>
+      <p class="score mono"><span id="res-score"></span><small>/<span id="res-max"></span></small></p>
+      <h2 id="res-titre"></h2>
+      <p id="res-texte"></p>
+      <p class="meilleur"><span data-t="meilleur"></span> : <span class="mono" id="res-meilleur"></span></p>
+    </div>
+    <button class="btn-whatsapp" id="btn-defier"><span data-t="defier"></span></button>
+    <button class="btn-secondaire" id="btn-rejouer" data-t="rejouer"></button>
+    <button class="btn-secondaire" id="btn-infos-resultat" data-t="infos"></button>
+    <button class="btn-lien" id="btn-accueil" data-t="accueil"></button>
+  </section>
+
+  <!-- INFOS CLES -->
+  <section id="ecran-infos" class="ecran">
+    <header class="barre">
+      <button class="icone" id="btn-infos-retour" aria-label="Retour">&larr;</button>
+      <div class="barre-titre"><strong data-t="infos"></strong><span data-t="horsLigne"></span></div>
+    </header>
+    <ol class="gestes" id="liste-gestes"></ol>
+    <h3 class="sous-titre" data-t="besoinAide"></h3>
+    <div id="liste-contacts"></div>
+  </section>
+
+</div>
+<script src="contenu.js"></script>
+<script src="scenes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
